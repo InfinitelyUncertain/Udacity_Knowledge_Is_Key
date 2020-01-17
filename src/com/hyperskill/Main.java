@@ -14,6 +14,9 @@ public class Main {
             case "enc":
                 encrypt(text, key);
                 break;
+            case "dec":
+                decrypt(text, key);
+                break;
         }
 
     }
@@ -27,5 +30,17 @@ public class Main {
         }
 
         System.out.println(encryptedString);
+    }
+
+    public static void decrypt(String text, int key){
+        String decryptedString = "";
+
+        char[] textCharArray = text.toCharArray();
+
+        for(char ch : textCharArray){
+            decryptedString += (char) (ch - key);
+        }
+
+        System.out.println(decryptedString);
     }
 }
