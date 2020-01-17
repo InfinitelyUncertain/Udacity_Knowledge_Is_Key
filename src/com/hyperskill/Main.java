@@ -8,10 +8,19 @@ public class Main {
 
 	    String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+	    String operation = scanner.nextLine(); //"enc" for encrypt or "dec" for decrypt"
 	    String text = scanner.nextLine();
 	    int key = scanner.nextInt();
 
-	    String encryptedString = "";
+	    switch (operation){
+            case "enc":
+                encrypt(text, key, alphabet);
+                break;
+        }
+
+    }
+    public static void encrypt(String text, int key, String alphabet){
+        String encryptedString = "";
 
         for(char ch : text.toCharArray()){
             int charIndex = alphabet.indexOf(ch);
