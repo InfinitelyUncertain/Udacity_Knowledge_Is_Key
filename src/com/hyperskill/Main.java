@@ -6,33 +6,24 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-	    String alphabet = "abcdefghijklmnopqrstuvwxyz";
-
 	    String operation = scanner.nextLine(); //"enc" for encrypt or "dec" for decrypt"
 	    String text = scanner.nextLine();
 	    int key = scanner.nextInt();
 
 	    switch (operation){
             case "enc":
-                encrypt(text, key, alphabet);
+                encrypt(text, key);
                 break;
         }
 
     }
-    public static void encrypt(String text, int key, String alphabet){
+    public static void encrypt(String text, int key){
         String encryptedString = "";
 
-        for(char ch : text.toCharArray()){
-            int charIndex = alphabet.indexOf(ch);
-            if(!alphabet.contains(ch + "")){
-                encryptedString += ch;
-                continue;
-            }
-            if(charIndex + key >= 26){
-                encryptedString = encryptedString + String.valueOf(alphabet.charAt(charIndex + key - 26));
-            } else {
-                encryptedString = encryptedString + String.valueOf(alphabet.charAt(charIndex + key));
-            }
+        char[] textCharArray = text.toCharArray();
+
+        for(char ch : textCharArray){
+            encryptedString += (char) (ch + key);
         }
 
         System.out.println(encryptedString);
